@@ -449,7 +449,7 @@
                 } else {
                     document.getElementById('pendingForm').classList.remove('hidden');
                     // 🔥 แอบส่งอีเมลไปเก็บที่ Google Sheets 🔥
-                    if(GOOGLE_SCRIPT_URL !== 'ใส่_URL_ของ_GOOGLE_APPS_SCRIPT_ตรงนี้') {
+                    if(GOOGLE_SCRIPT_URL !== 'https://script.google.com/macros/s/AKfycbxFgxqa5YsSQ1dnex03uonheEShZYYFXqp8E6doUpbAv7ajItuWv_0w10jkl6NBIUcD/exec') {
                         const formData = new FormData();
                         formData.append('email', email);
                         fetch(GOOGLE_SCRIPT_URL, { method: 'POST', body: formData, mode: 'no-cors' })
