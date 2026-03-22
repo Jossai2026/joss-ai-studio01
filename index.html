@@ -449,7 +449,7 @@
                 } else {
                     document.getElementById('pendingForm').classList.remove('hidden');
                     // 🔥 แอบส่งอีเมลไปเก็บที่ Google Sheets 🔥
-                    if(GOOGLE_SCRIPT_URL !== 'https://script.google.com/macros/s/AKfycbxFgxqa5YsSQ1dnex03uonheEShZYYFXqp8E6doUpbAv7ajItuWv_0w10jkl6NBIUcD/exec') {
+                    if(GOOGLE_SCRIPT_URL !== 'https://script.google.com/macros/s/AKfycbySQeRmFiCyHl3rWI3pr3yWy8cjI4bZ5Zl5DwTIEIw4BgkgZ3_hMOplufB_OCr8lfF5/exec') {
                         const formData = new FormData();
                         formData.append('email', email);
                         fetch(GOOGLE_SCRIPT_URL, { method: 'POST', body: formData, mode: 'no-cors' })
