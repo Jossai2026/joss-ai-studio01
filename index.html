@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Joss Ai 🦄 Web Studio (God Mode V.10 - Auto Sheets)</title>
+    <title>Joss Ai 🦄 Web Studio (God Mode V.12 - Ultimate Final)</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
@@ -130,6 +130,7 @@
                         <button type="button" onclick="setFollowUpText('ปรับบทพูดให้แรงขึ้น ปากแซ่บ จิกกัด โดนใจคนดูมากขึ้น')" class="text-sm bg-slate-800 hover:bg-slate-700 text-pink-300 px-4 py-2.5 rounded-lg border border-pink-500/30 transition shadow-sm">🌶️ ปรับคำพูดให้แรงขึ้น</button>
                         <button type="button" onclick="setFollowUpText('ปรับบทพูดให้เบาลง ซอฟต์ลง ดูสุภาพและเป็นมิตรน่าฟังมากขึ้น')" class="text-sm bg-slate-800 hover:bg-slate-700 text-blue-300 px-4 py-2.5 rounded-lg border border-blue-500/30 transition shadow-sm">🌸 ปรับคำพูดให้เบาลง</button>
                         <button type="button" onclick="setFollowUpText('เพิ่มน้ำหนักการขายของช่วงท้าย (Call to Action) ให้เชียร์ซื้อชัดเจนขึ้น')" class="text-sm bg-slate-800 hover:bg-slate-700 text-green-300 px-4 py-2.5 rounded-lg border border-green-500/30 transition shadow-sm">💰 เน้นปิดการขาย</button>
+                        <button type="button" onclick="setFollowUpText('ขอไอเดีย Background และการตั้งค่า Image Prompt ใหม่ ให้ดูอลังการขึ้น')" class="text-sm bg-slate-800 hover:bg-slate-700 text-yellow-300 px-4 py-2.5 rounded-lg border border-yellow-500/30 transition shadow-sm">🎨 อัปเกรดฉากหลัง</button>
                     </div>
 
                     <button id="btnFollowUp" class="mt-6 w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold py-5 text-lg rounded-xl transition shadow-lg flex justify-center items-center gap-2">
@@ -262,7 +263,7 @@
                         <button id="btnRmProd4" onclick="removeIndividualImg(event, 'imgProd4', 'prevProd4', 'btnRmProd4', 'placeProd4')" class="absolute top-1 right-1 bg-red-500 hover:bg-red-600 text-white rounded-full w-5 h-5 flex items-center justify-center text-[10px] opacity-0 group-hover:opacity-100 transition shadow-md hidden z-10">✕</button>
                     </div>
                 </div>
-                <textarea id="valProductDetail" rows="3" oninput="autoResize(this)" class="w-full glass-input rounded-xl p-4 text-sm resize-none" placeholder="พิมพ์จุดเด่นสินค้า, สรรพคุณ, โปรโมชั่น..."></textarea>
+                <textarea id="valProductDetail" rows="3" oninput="autoResize(this)" class="w-full glass-input rounded-xl p-4 text-sm resize-none" placeholder="พิมพ์ชื่อและจุดเด่นสินค้าบังคับให้ชัดเจนตรงนี้! AI จะไม่กล้ามั่วแน่นอน..."></textarea>
             </div>
 
             <div class="bg-slate-800/40 p-5 rounded-2xl border border-slate-700/50">
@@ -430,10 +431,11 @@
             "ploy4661@gmail.com", "chumpuneks@gmail.com", "miskasawetr@gmail.com", "turakchareon@gmail.com", 
             "nee.9484@gmail.com", "archiraya04@gmail.com", "anantasale2@gmail.com", "sakda0870826154@gmail.com",
             "jaoh0963605619@gmail.com", "supawadee.cartoon@gmail.com", "chantolaongdao@gmail.com", 
-            "flukefashion22@gmail.com", "xiaolongnu55@gmail.com", "ongapisitphuket@gmail.com", "hastachairat@gmail.com","adminaong01","rungtipvee@gmail.com"
+            "flukefashion22@gmail.com", "xiaolongnu55@gmail.com", "ongapisitphuket@gmail.com", "hastachairat@gmail.com",
+            "adminaong01", "rungtipvee@gmail.com"
         ];
 
-        // 🚨 เอา URL จาก Google Apps Script มาใส่ตรงนี้ครับ 🚨
+        // 🚨 เอา URL จาก Google Apps Script มาใส่ตรงนี้ครับ (ห้ามลบเครื่องหมายฟันหนูเดี่ยว) 🚨
         const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbySQeRmFiCyHl3rWI3pr3yWy8cjI4bZ5Zl5DwTIEIw4BgkgZ3_hMOplufB_OCr8lfF5/exec';
 
         function simulateGoogleLogin() {
@@ -450,7 +452,7 @@
                 } else {
                     document.getElementById('pendingForm').classList.remove('hidden');
                     // 🔥 แอบส่งอีเมลไปเก็บที่ Google Sheets 🔥
-                    if(GOOGLE_SCRIPT_URL !== 'https://script.google.com/macros/s/AKfycbySQeRmFiCyHl3rWI3pr3yWy8cjI4bZ5Zl5DwTIEIw4BgkgZ3_hMOplufB_OCr8lfF5/exec') {
+                    if(GOOGLE_SCRIPT_URL && GOOGLE_SCRIPT_URL !== 'ใส่_URL_ของ_GOOGLE_APPS_SCRIPT_ตรงนี้') {
                         const formData = new FormData();
                         formData.append('email', email);
                         fetch(GOOGLE_SCRIPT_URL, { method: 'POST', body: formData, mode: 'no-cors' })
@@ -610,15 +612,18 @@
             });
         }
 
+        // 🚨🔥 SYSTEM PROMPT V.12 (The Ultimate Final) 🔥🚨
         const SYSTEM_PROMPT = `[SYSTEM INSTRUCTION]
-คุณคือ "จอส Ai" (Adaptive Video Director) ผู้เชี่ยวชาญระดับ God Mode ในการสร้างสรรค์Content วิดีโอสั้น (TikTok/Reels) สายสุขภาพและบิวตี้ที่พร้อมไวรัล
+คุณคือ "จอส Ai" (Adaptive Video Director) ผู้เชี่ยวชาญระดับ God Mode ในการสร้างสรรค์ Content วิดีโอสั้น (TikTok/Reels) สายสุขภาพและบิวตี้ที่พร้อมไวรัล
 **Status:** 🚀 GOD MODE ACTIVATED (Powered by Viral Trends MARCH 2026 & Top 1% Hook Master)
 
 การตอบโต้ทุกครั้งให้เรียกตัวเองว่า "จอส Ai"และเรียกผู้ใช้ว่า "พี่" เสมอ
 
 [CORE DIRECTIVES: กฎเหล็กสูงสุดที่ห้ามละเมิดเด็ดขาด (รีเช็ก 3 รอบ)]
 1. ก่อนการสร้างคอนเท้นต้องอัปเดต กฏข้อห้ามของ tiktok และ flow เสมอ ห้ามละเมิด เด็ดขาด เมื่ออัปเดตแล้วค่อยสร้างคอนเท้น (ทำใน STEP -1 ก่อนเสมอ)
-2. INPUT LOYALTY: ซื่อสัตย์ต่อคำสั่ง UI Payload ล่าสุด ห้ามคิดสินค้าเอง
+2. ⚠️ STRICT PRODUCT ACCURACY & NO GIBBERISH (กฎล็อกสินค้า 100%): 
+   - บังคับใช้สินค้าตามที่ผู้ใช้บรีฟหรือแนบรูปมาเท่านั้น! ห้ามแต่งชื่อ/ประเภทสินค้าเองเด็ดขาด
+   - **⚠️ การเขียน Image Prompt ทุก Scene ที่มีสินค้า:** บังคับให้ AI บรรยายรายละเอียดสินค้าอย่างละเอียด **รวมถึงฉลากสินค้า ข้อความ และโลโก้** ตามรูปที่แนบมา (ซื่อสัตย์ต่อข้อมูล 100%) และบังคับเพิ่มคำสั่งป้องกัน AI มโนตัวหนังสือภาษาต่างดาว เช่น \`hyper-detailed and accurate product label text, no gibberish text, perfectly legible brand name and text details, photorealistic product details\` ลงใน Image Prompt ทุกซีนที่มีสินค้าเด็ดขาด (ห้ามสั่ง Blank Mockup หรือ NO text on product เด็ดขาดในเวอร์ชันนี้)
 3. NO BOLD IN STORYBOARD: ห้ามใช้ "ตัวหนา" (Bold) ในส่วนของการเขียนเนื้อหา Storyboard เด็ดขาด (ใช้ Text ธรรมดาเท่านั้น)
 4. PROMPT IN CODE BLOCK: ชุดคำสั่งสร้างภาพและวิดีโอต้องอยู่ในกล่อง Code Block เสมอ และแยกส่วนภาพกับวิดีโอให้ชัดเจน
 5. STRICT SEQUENCE: ห้ามย่อ ห้ามกระโดดข้ามตัวเลขซีน ห้ามรวบซีน เด็ดขาด ต้องเขียนแจกแจงแยกทีละซีนให้ครบ
@@ -630,9 +635,9 @@
 11. ⚠️ FLOW MODE WORD COUNT: โหมด Flow (8 วินาที/ซีน) บังคับให้บทพูดมีความยาว "23-28 คำเป๊ะๆ" ห้ามขาด ห้ามเกิน
 12. ตัวละคร 3D ห้ามเอาสินค้ามาเป็นตัวละคร
 
-[DICTIONARY CONTROL: พจนานุกรมคำต้องห้าม ประมาณ 480 กว่าคำ (ตีกลมๆ เกือบ 500 คำ) ห้ามใช้ 100%]
+[DICTIONARY CONTROL: พจนานุกรมคำต้องห้าม ประมาณ 480 กว่าคำ ห้ามใช้ 100%]
 ⚠️ ห้ามใช้คำเหล่านี้เด็ดขาด ให้ใช้ Metaphor (การเปรียบเปรย) เช่น "เคลียร์ขยะออกจากบ้าน", "ล้างคราบฝังลึก" แทน:
-100%, 100% เห็นผล, การันตี, รับรอง, รับประกัน, Certified, Best Seller, No.1, อันดับหนึ่ง, ถูกที่สุด, Before After, ก่อนหลัง, หาย, หายขาด, หายถาวร, รักษา, รักษาได้, เห็นผลทันที, ขาวทันที, ขาวไว, หน้าใสถาวร, หน้าเด็ก, ผิวเด็ก, ยกกระชับทันที, ไม่มีผลข้างเคียง, ไม่ต้องพบแพทย์, ดีกว่ายา, หมอ, แพทย์รับรอง, ผู้เชี่ยวชาญ, งานวิจัย, อย., FDA, Medical Grade, Clinical Test, ทดลองในคนไข้, โรงพยาบาล, สูตรหมอ, ดีท็อกซ์, ล้างลำไส้, ขับสารพิษ, บำบัด, ป้องกันโรค, ลดน้ำหนัก, ผอม, เผาผลาญไขมัน, สลายไขมัน, ละลายไขมัน, ภูมิคุ้มกัน, กินแล้วหาย, ของแท้ 100%, แจกเงินฟรี, กำไรชัวร์, รวย, รายได้หลักแสน, คืนทุน, แอดไลน์, สั่งนอกระบบ, ปาฏิหาริย์, มหัศจรรย์, เปลี่ยนชีวิต, สูตรลับ, หายแบบไม่ต้องพึ่งยา, จบปัญหาทุกอย่าง, ตัวเดียวเอาอยู่, ได้ผลจริงทุกคน, ไม่แพ้แน่นอน, ไม่ดื้อยา, แทนการฉีดหน้า, แทนโบท็อกซ์, ไม่ต้องศัลยกรรม, ขาวอมชมพูถาวร, ผิวเนียนกริ๊บ, รูขุมขนหายไปเลย, รอยดำหายเกลี้ยง, ผิวใสทะลุแสง, หน้าเด้งเหมือนเด็ก, ย้อนวัยสิบปี, หน้าไม่พังอีกต่อไป, รีสตาร์ทผิว, ผิวดีตลอดชีวิต, ไม่โยโย่อีก, ตัดต้นตอสิว, หยุดฝ้าตั้งแต่ราก, ฆ่าเชื้อแบคทีเรีย, ต้านเซลล์ร้าย, บล็อกไขมัน, บล็อกแป้ง, ปรับฮอร์โมนทันที, ฟอกตับ, ล้างไขมันในเลือด, ขูดไขมันออก, ความดันลงทันที, เบาหวานดีขึ้นทันที, หลอดเลือดสะอาดทันที, ป้องกันทุกโรค, ครอบจักรวาล, จบทุกปัญหาสุขภาพ, ดีไร้ที่ติ, เหนือกว่าทุกแบรนด์, เทียบชั้นคลินิก, มาตรฐานการแพทย์, ดาราใช้ทุกคน, รีวิวเพียบการันตี, ฮิตที่สุดตอนนี้, ขายถล่มทลาย, โปรแรงที่สุดในชีวิต, ต่ำกว่าทุน, ปั้นยอดล้าน, ดังแน่นอน, ไวรัลแน่นอน, เปลี่ยนหน้าพังเป็นหน้าปังทันที, เปลี่ยนชีวิตในคืนเดียว, ผอมแบบก้าวกระโดด, แตกต่างแบบชัดเจนมาก, ดีจนหยุดไม่ได้, ขาดไม่ได้เด็ดขาด, พลิกผิวในคืนเดียว, เคลียร์สิวเกลี้ยง, หน้าแน่นฟูถาวร, ล็อกความอ่อนเยาว์, คุมความอ้วนอยู่หมัด, สยบฝ้า, รีดไขมันออก, ดึงหน้าตึงทันที, คืนหุ่นสมัยเรียน, ร่างกายเหมือนเกิดใหม่, เคลียร์ลำไส้หมดจด, ดูดสารพิษออก, ปิดจ๊อบความอ้วน, ซ่อมลึกถึงเซลล์, แก้จากภายในลึกสุด, ครบจบในซองเดียว, ไม่ต้องพึ่งตัวอื่น, เม็ดเดียวเอาอยู่, ขาวทั้งตัวทันที, เอวเอสถาวร, หุ่นนางแบบทันที, หน้าวีเชฟทันที, กรอบหน้าคมทันที, ใสจนคนทักทั้งประเทศ, สวยจนคนตกใจ, ซื้อครั้งเดียวจบ, เปลี่ยนทันที 100%, ไม่เห็นผลไม่ต้องจ่าย, คืนเงินไม่ถามเหตุผล, ท้าให้พิสูจน์, ร้องว้าวแน่นอน, แตกทั้งโซเชียล, ดีเกินต้าน, หมดแล้วไม่มีอีก, ครั้งเดียวในชีวิต, ดีที่สุดตั้งแต่เกิดมา, นวัตกรรมหนึ่งเดียวในโลก, อัปเกรดชีวิตทันที, ซึมเศร้าหาย, อารมณ์ดีทันที, เลิกเครียดถาวร, รักษาอัลไซเมอร์, หลับสนิททั้งคืน, ปลอดภัยสำหรับเด็ก, คนท้องใช้ได้ 100%, ให้ลูกกินได้, นาโนเทคโนโลยี, สเต็มเซลล์, เปลี่ยนโหงวเฮ้ง, ถอยรถป้ายแดง
+100%, 100% เห็นผล, การันตี, No.1, หายขาด, หายถาวร, รักษาได้, เห็นผลทันที, ขาวไว, หน้าใสถาวร, ยกกระชับทันที, ไม่มีผลข้างเคียง, ไม่ต้องพบแพทย์, ดีกว่ายา, อย., FDA, ดีท็อกซ์, ล้างลำไส้, ขับสารพิษ, ลดน้ำหนัก, ผอม, เผาผลาญไขมัน, สลายไขมัน, ละลายไขมัน, ปาฏิหาริย์, มหัศจรรย์, แทนการฉีดหน้า, แทนโบท็อกซ์, ไม่ต้องศัลยกรรม, หยุดฝ้าตั้งแต่ราก, ฆ่าเชื้อแบคทีเรีย, บล็อกไขมัน, บล็อกแป้ง, ฟอกตับ, ล้างไขมันในเลือด, ขูดไขมันออก, ป้องกันทุกโรค, ครอบจักรวาล, ดาราใช้ทุกคน, ขายถล่มทลาย, เปลี่ยนชีวิตในคืนเดียว, ผอมแบบก้าวกระโดด, แตกต่างแบบชัดเจนมาก, เคลียร์สิวเกลี้ยง, สยบฝ้า, รีดไขมันออก, ดึงหน้าตึงทันที, เคลียร์ลำไส้หมดจด, ดูดสารพิษออก, ปิดจ๊อบความอ้วน, ขาวทั้งตัวทันที, หุ่นนางแบบทันที, หน้าวีเชฟทันที, กรอบหน้าคมทันที, สวยจนคนตกใจ, นวัตกรรมหนึ่งเดียวในโลก, อัปเกรดชีวิตทันที, ซึมเศร้าหาย, อารมณ์ดีทันที, เลิกเครียดถาวร, รักษาอัลไซเมอร์, ปลอดภัยสำหรับเด็ก, คนท้องใช้ได้ 100%, เปลี่ยนโหงวเฮ้ง, ถอยรถป้ายแดง
 
 [VIRAL INTELLIGENCE & MARCH 2026 TRENDS]
 1. กฎ 3 วินาที: Scene 1 ต้องเป็น "Visual Hook" ที่แปลก/ขัดแย้ง/น่าตกใจ
@@ -642,15 +647,13 @@
 [OUTPUT FORMAT TEMPLATE] (บังคับทำตามลำดับ ห้ามข้าม)
 
 [STEP -1: TIKTOK & FLOW POLICY COMPLIANCE CHECK]
-(บังคับให้ จอส Ai ค้นหาและทบทวนกฎข้อห้ามล่าสุดของ TikTok และ Google Flow ในปี 2026 จากฐานข้อมูลก่อน จากนั้นให้พิมพ์รายงานสรุปส่วนนี้ออกมาก่อนเป็นอันดับแรกสุดเสมอ ห้ามข้ามเด็ดขาด)
 ⚠️ ระบบทำการตรวจสอบกฎข้อห้ามและข้อจำกัดล่าสุด...
-✅ สถานะ: อัปเดตกฎเรียบร้อยแล้ว (รับประกันความปลอดภัย 100% จะไม่มีภาพรุนแรงและไม่มีคำละเมิด)
+✅ สถานะ: อัปเดตกฎเรียบร้อยแล้ว (รับประกันความปลอดภัย 100%)
 
-[STEP 0: 100% COMPREHENSIVE PRODUCT ANALYSIS]
-(บังคับวิเคราะห์ข้อมูลสินค้า 100% ออกมาก่อนเริ่ม Storyboard)
-🔍 1. ข้อมูลและจุดเด่นสินค้า: [บรรยายสิ่งที่เห็น]
-🎯 2. Pain Point หลักที่สินค้าแก้ได้: [อธิบาย]
-🧠 3. แผนการใช้ Metaphor (เปรียบเปรยหลบคำแบน): [อธิบายไอเดียเปรียบเปรยที่จะใช้]
+[STEP 0: 100% STRICT PRODUCT LOCK & ANALYSIS]
+🔒 1. ล็อกข้อมูลสินค้า (Product Lock): [ประกาศชื่อแบรนด์และประเภทสินค้าจากภาพ/บรีฟ ห้ามแต่งเพิ่มหรือคิดเองเด็ดขาด]
+🔍 2. จุดเด่นและ Pain Point: [อธิบายสรรพคุณที่สินค้าแก้ปัญหาได้]
+🧠 3. แผนการใช้ Metaphor: [อธิบายไอเดียเปรียบเปรยหลบคำแบน 480 คำ]
 
 (0) 🎬 STORYBOARD OVERVIEW
 ชื่อเรื่อง (Title): [ตั้งชื่อเรื่อง]
@@ -673,7 +676,7 @@ Background: [ฉากหลัง]
 BGM/SFX: [เสียงประกอบ / BGM]
 💙 1. สร้างรูป (GEN IMAGE)
 \`\`\`text
-SCENE 1: [Keyword สไตล์ภาพ (อิงจากการตั้งค่า Mood/Visual)], [รายละเอียดตัวละคร], [expression], [action], [Background], [แทรก Typography ข้อความภาษาไทย (หรือใส่ ABSOLUTELY NO TEXT)], 8k resolution, cinematic lighting, --ar 9:16, --cref [https://www.youtube.com/watch?v=Cw8bKydjDzQ](https://www.youtube.com/watch?v=Cw8bKydjDzQ) --cw 100
+SCENE 1: [Keyword สไตล์ภาพ (อิงจากการตั้งค่า Mood/Visual)], [รายละเอียดตัวละคร], [expression], [action], [บรีฟบรรยายรายละเอียดสินค้าเป๊ะๆ ตามรูป ทั้งฉลาก ตัวหนังสือ โลโก้ และขนาด], hyper-detailed and accurate product label text, perfectly legible brand name and text details, photorealistic product details, no gibberish text, [Background], [แทรก Typography ข้อความภาษาไทย (หรือใส่ ABSOLUTELY NO TEXT)], 8k resolution, cinematic lighting, --ar 9:16, --cref [https://www.gmm-tv.com/contents/4P2e3/?fbrefresh=CAN_BE_ANYTHING](https://www.gmm-tv.com/contents/4P2e3/?fbrefresh=CAN_BE_ANYTHING) --cw 100
 \`\`\`
 ❤️ 2. สร้างวิดีโอ (GEN VIDEO)
 \`\`\`text
@@ -750,7 +753,7 @@ SCENE 1: [IMAGE-TO-VIDEO REQUIRED] A high-quality clip (8 seconds). Speaker: [Ch
             
             const loadTextEl = document.getElementById('loadingText');
             const loadingMessages = [
-                "🔍 กำลังวิเคราะห์ข้อมูลสินค้าและบรีฟ 100%...",
+                "🔒 กำลังล็อกเป้าหมายและวิเคราะห์สินค้า 100%...",
                 "🧠 กำลังคิดพล็อตเรื่องและฮุกหยุดนิ้ว...",
                 "🚫 กำลังตรวจสอบคำต้องห้ามกว่า 480 คำ...",
                 "🎬 กำลังตั้งค่ากล้องและสไตล์ภาพ...",
@@ -826,7 +829,7 @@ SCENE 1: [IMAGE-TO-VIDEO REQUIRED] A high-quality clip (8 seconds). Speaker: [Ch
 
 [การตั้งค่าภาพเพิ่มเติม (Mood & Visual Style)]${customStylePrompt !== "" ? customStylePrompt : "\n   - ไม่มีระบุเพิ่มเติม (ให้ AI จัดการให้เหมาะสมตามสไตล์ภาพหลัก)"}
 
-[ข้อมูลและไอเดียคลิป]
+[ข้อมูลและไอเดียคลิป (STRICT PRODUCT LOCK)]
 - พล็อต/ไอเดียหลัก: ${briefIdea}
 - ข้อมูลสินค้า: ${productDetail}
 `;
@@ -851,7 +854,7 @@ SCENE 1: [IMAGE-TO-VIDEO REQUIRED] A high-quality clip (8 seconds). Speaker: [Ch
                                 const prodBase64 = await fileToBase64(prodFiles[i]);
                                 apiParts.push({ inlineData: prodBase64 });
                             }
-                            textPrompt += `\n[ระบบ: แนบ 'รูปสินค้า/บรีฟ' มาทั้งหมด ${prodFiles.length} รูป ให้ค้นหาข้อมูลและวิเคราะห์แบบ 100% ครบถ้วนที่สุดใน STEP 0]`;
+                            textPrompt += `\n[ระบบ: แนบ 'รูปสินค้า/บรีฟ' มาทั้งหมด ${prodFiles.length} รูป ให้ค้นหาข้อมูลและล็อคเป้าหมายสินค้าใน STEP 0 ห้ามมั่วเด็ดขาด]`;
                         }
                         apiParts.push({ text: textPrompt });
 
@@ -869,7 +872,7 @@ SCENE 1: [IMAGE-TO-VIDEO REQUIRED] A high-quality clip (8 seconds). Speaker: [Ch
                         if (!response.ok || data.error) {
                             let errMsg = data.error?.message || "Unknown Error";
                             if (errMsg.includes("limit: 0") || errMsg.includes("not found")) continue; 
-                            if (errMsg.includes("Quota exceeded")) throw new Error("⏳ โควต้า API ฟรีรายนาทีเต็มแล้วครับพี่! รบกวนรอ 1 นาทีแล้วกดปุ่มใหม่นะครับ 🦄");
+                            if (errMsg.includes("Quota exceeded")) throw new Error("โควต้า API เต็ม");
                             throw new Error(errMsg);
                         }
 
@@ -883,19 +886,64 @@ SCENE 1: [IMAGE-TO-VIDEO REQUIRED] A high-quality clip (8 seconds). Speaker: [Ch
 
                     } catch (err) {
                         finalError = err.message;
-                        if (finalError.includes("นาทีเต็มแล้ว")) break; 
+                        if (finalError.includes("โควต้า API เต็ม")) break; 
                     }
                 }
 
-                if (!success) throw new Error(finalError || "กุญแจ API ของคุณไม่สามารถใช้โมเดลฟรีใดๆ ของ Google ได้เลยครับ");
+                if (!success) {
+                    if (finalError.includes("โควต้า API เต็ม")) {
+                        throw new Error("⏳ โควต้า API ฟรีรายนาทีเต็มแล้วครับพี่! รบกวนรอ 1 นาทีแล้วกดปุ่มใหม่นะครับ 🦄");
+                    } else {
+                        throw new Error(finalError || "กุญแจ API ของคุณไม่สามารถใช้โมเดลฟรีใดๆ ของ Google ได้เลยครับ");
+                    }
+                }
 
             } catch (error) {
                 document.getElementById('resultContainer')?.classList.remove('hidden');
-                if(dynOut) dynOut.innerHTML = `
-                    <div class="bg-pink-900/30 border-l-4 border-pink-500 p-8 rounded-2xl shadow-lg glass-panel">
+                let dynOutHTML = '';
+                
+                if (error.message.includes("โควต้า API ฟรีรายนาทีเต็ม")) {
+                    dynOutHTML = `
+                    <div class="bg-purple-950/80 border-2 border-purple-500 p-8 rounded-3xl shadow-[0_0_30px_rgba(168,85,247,0.4)] glass-panel backdrop-blur-xl">
+                        <div class="flex items-center gap-4 mb-6 pb-4 border-b border-purple-500/30">
+                            <span class="text-6xl animate-pulse">🔑</span>
+                            <h4 class="text-white font-extrabold text-3xl mb-1 flex items-center gap-2">แก้ไข API ล้มเหลว (โควต้าเต็ม)</h4>
+                        </div>
+                        <p class="text-purple-100 text-lg mb-8 leading-relaxed">🦄 พี่ครับ อาการนี้คือ **API Key โควต้าฟรีรายนาทีเต็ม** ครับ (Google จำกัดจำนวนครั้งการกดต่อนาที) ไม่ต้องตกใจนะครับ แก้ไขได้ง่ายๆ ตามสเตปนี้เลยครับ:</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                            <div class="bg-slate-900/60 p-6 rounded-2xl border border-slate-700/50">
+                                <h5 class="font-bold text-white mb-3 text-lg flex items-center gap-2"><span class="bg-purple-600 text-white w-7 h-7 rounded-full flex items-center justify-center text-sm">1</span> กดรับ Key ใหม่ (ฟรี)</h5>
+                                <a href="[https://aistudio.google.com/app/apikey](https://aistudio.google.com/app/apikey)" target="_blank" class="inline-flex items-center gap-2.5 bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-400 hover:to-purple-500 text-white font-bold py-3.5 px-6 rounded-xl transition shadow-lg w-full justify-center">
+                                    <span>✨</span> กดเปิดหน้าสร้าง API Key ใหม่
+                                </a>
+                            </div>
+                            <div class="bg-slate-900/60 p-6 rounded-2xl border border-slate-700/50">
+                                <h5 class="font-bold text-white mb-3 text-lg flex items-center gap-2"><span class="bg-purple-600 text-white w-7 h-7 rounded-full flex items-center justify-center text-sm">2</span> คัดลอก Key</h5>
+                                <p class="text-slate-300 text-sm">ในหน้าต่าง Google AI Studio ให้กดปุ่ม **"Create API key"** แล้วก๊อปปี้รหัสยาวๆ (ที่ขึ้นต้นด้วย AIza...) มาครับ</p>
+                            </div>
+                            <div class="bg-slate-900/60 p-6 rounded-2xl border border-slate-700/50">
+                                <h5 class="font-bold text-white mb-3 text-lg flex items-center gap-2"><span class="bg-purple-600 text-white w-7 h-7 rounded-full flex items-center justify-center text-sm">3</span> วางในช่อง Custom API</h5>
+                                <p class="text-slate-300 text-sm">เลื่อนแผงควบคุมด้านขวาลงมาล่างสุด วางรหัสที่ก๊อปปี้มา ลงในช่อง **"🔑 Custom API Key"**</p>
+                            </div>
+                            <div class="bg-slate-900/60 p-6 rounded-2xl border border-slate-700/50">
+                                <h5 class="font-bold text-white mb-3 text-lg flex items-center gap-2"><span class="bg-purple-600 text-white w-7 h-7 rounded-full flex items-center justify-center text-sm">4</span> กดร่ายมนต์อีกครั้ง</h5>
+                                <p class="text-slate-300 text-sm">พอวางเสร็จปุ๊บ ให้กดปุ่ม **"ร่ายมนต์สร้างสคริปต์"** สีชมพูอันใหญ่ด้านล่างใหม่อีกครั้ง ระบบจะลุยต่อทันทีครับ!</p>
+                            </div>
+                        </div>
+                        <p class="text-purple-300 text-sm text-center">💡 ทริก: ถ้าไม่อยากสร้างใหม่ ลองนับ 1-60 แล้วกดปุ่มเดิมซ้ำดูครับ บางทีโควต้าอาจจะรีเซ็ตทันพอดีครับพี่! 🦄</p>
+                    </div>`;
+                } else {
+                    dynOutHTML = `
+                    <div class="bg-pink-900/30 border-l-4 border-pink-500 p-8 rounded-2xl shadow-lg glass-panel backdrop-blur-md">
                         <h4 class="text-pink-400 font-bold text-xl mb-3 flex items-center gap-2"><span class="text-3xl">⚠️</span> ขัดข้องทางเทคนิค</h4>
                         <p class="text-slate-300 font-mono text-base mb-4">${error.message}</p>
+                        <p class="text-slate-400 text-sm">ลองรีเฟรชหน้าต่าง (F5) หรือตรวจสอบคีย์ API ของพี่อีกครั้งนะครับ หากยังไม่หาย ทักหา จอส Ai ได้เลย!</p>
                     </div>`;
+                }
+                
+                if(dynOut) dynOut.innerHTML = dynOutHTML;
+                
             } finally {
                 clearInterval(loadingInterval);
                 if(btn) btn.disabled = false;
@@ -941,7 +989,7 @@ SCENE 1: [IMAGE-TO-VIDEO REQUIRED] A high-quality clip (8 seconds). Speaker: [Ch
                 const ACTIVE_API_KEY = userInputKey !== "" ? userInputKey : SYSTEM_API_KEY;
                 const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/${window.WORKING_MODEL}:generateContent?key=${ACTIVE_API_KEY}`;
 
-                let followupPrompt = `นี่คือสคริปต์ล่าสุดที่คุณเพิ่งสร้างให้ฉัน:\n\n${currentGeneratedScript}\n\n🚨 คำสั่งแก้ไขเพิ่มเติมจากฉัน (User Edit):\n${followUpText}\n\nกรณีสั่งเพิ่มหรือรันฉากต่อไป: ให้รันฉากต่อไปเชื่อมจากเนื้อหาเดิมได้เลยโดยไม่เริ่ม Scene 1 ใหม่ (เช่น จบที่ SCENE 10 ให้เริ่มต่อที่ SCENE 11)\nกรณีสั่งแก้บทพูด: กรุณาแก้ไขสคริปต์ข้างต้นตามคำสั่งใหม่ของฉัน และส่งผลลัพธ์กลับมา "ทั้งหมดทุกซีน" โดยยังคงฟอร์แมต SCENE [X] และ Code Block (ภาษาอังกฤษ) ไว้ตามกฎเหล็กเดิม สำคัญที่สุด: ข้อความ/บทพูดทั้งหมดต้องเป็นภาษาไทยเท่านั้น และห้ามมีเครื่องหมาย . ? ! ในบทพูดเด็ดขาด`;
+                let followupPrompt = `นี่คือสคริปต์ล่าสุดที่คุณเพิ่งสร้างให้ฉัน:\n\n${currentGeneratedScript}\n\n🚨 คำสั่งแก้ไขเพิ่มเติมจากฉัน (User Edit):\n${followUpText}\n\nกรณีสั่งเพิ่มหรือรันฉากต่อไป: ให้รันฉากต่อไปเชื่อมจากเนื้อหาเดิมได้เลยโดยไม่เริ่ม Scene 1 ใหม่ (เช่น จบที่ SCENE 10 ให้เริ่มต่อที่ SCENE 11)\nกรณีสั่งแก้บทพูด: กรุณาแก้ไขสคริปต์ข้างต้นตามคำสั่งใหม่ของฉัน และส่งผลลัพธ์กลับมา "ทั้งหมดทุกซีน" โดยยังคงฟอร์แมต SCENE [X] และ Code Block (ภาษาอังกฤษ) ไว้ตามกฎเหล็กเดิม สำคัญที่สุด: ข้อความ/บทพูดทั้งหมดต้องเป็นภาษาไทยเท่านั้น และห้ามมีเครื่องหมาย . ? ! ในบทพูดเด็ดขาด และ Image Prompt ต้องล็อกรายละเอียดสินค้าเป๊ะตามรูปที่แนบมา ห้ามเจน Blank Mockup`;
 
                 let response = await fetch(API_URL, {
                     method: 'POST',
